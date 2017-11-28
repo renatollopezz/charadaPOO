@@ -1,0 +1,38 @@
+﻿CREATE DATABASE projeto;			
+
+CREATE TABLE jogador(
+	id_jogador serial,
+	tx_nome varchar(56),
+	constraint pk_id_jogador primary key (id_jogador)
+);
+
+CREATE TABLE genero(
+	id_genero serial,
+	tx_nome varchar(56) not null,
+	constraint pk_id_genero primary key (id_genero)
+
+);
+
+CREATE TABLE pergunta(
+	id_pergunta serial,
+	id_genero integer not null,
+	tx_pergunta varchar(256) not null,
+	tx_resposta varchar(256) not null,
+	constraint pk_id_pergunta primary key (id_pergunta),
+	constraint fk_id_genero_pergunta foreign key (id_genero)
+	references genero (id_genero)
+	
+);
+
+
+CREATE TABLE ranking(
+	id_ranking serial,
+	id_jogador integer not null,
+	dt_data_jogada timestamp not null default now(),
+	nb_pontuacao integer not null,
+	constraint pk_id_ranking primary key (id_ranking),
+	constraint fk_id_jogador_ranking foreign key (id_jogador)
+	references jogador (id_jogador)
+);
+
+

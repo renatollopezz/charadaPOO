@@ -36,6 +36,7 @@ public class PerguntaDAO {
                 p.setIdPergunta(resultSet.getInt("id_pergunta"));
                 p.setTxPergunta(resultSet.getString("tx_pergunta"));
                 p.setTxResposta(resultSet.getString("tx_resposta"));
+                p.setTxDica(resultSet.getString("tx_dica"));
                 perguntas.add(p);
             }
             System.out.println("Perguntas carregadas!");

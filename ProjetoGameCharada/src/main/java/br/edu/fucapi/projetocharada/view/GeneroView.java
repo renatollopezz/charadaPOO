@@ -10,7 +10,6 @@ import br.edu.fucapi.projetocharada.dao.JogadorDAO;
 import br.edu.fucapi.projetocharada.model.Genero;
 import br.edu.fucapi.projetocharada.model.Jogador;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -29,7 +28,7 @@ public class GeneroView extends JFrame {
     private GeneroDAO dao;
     private Genero genero;
     private Jogador jogador;
-    private HomeView homeView;
+    private final HomeView homeView;
     private JButton marcado;
     
     public GeneroView(HomeView homeView) {
@@ -53,9 +52,9 @@ public class GeneroView extends JFrame {
         JButton btnIniciar = new JButton("Iniciar",iconeIniciar);
         
         // Definir posição dos componentes
-        btnIniciar.setBounds(450, 300, 130, 50);
-        edtNome.setBounds(20,40,410,40);       
-        btnVoltar.setBounds(20, 300, 130, 50);
+        btnIniciar.setBounds(400, 300, 150, 50);
+        edtNome.setBounds(20,40,430,40);       
+        btnVoltar.setBounds(20, 300, 150, 50);
         lblNomeJogador.setBounds(20,20,140  ,10);
         
         //buscar todos os generos e criar os botões de forma dinamica
@@ -91,7 +90,7 @@ public class GeneroView extends JFrame {
                   
               });
               //Definir posição do botão
-              btn.setBounds(x, y, 130, 50);
+              btn.setBounds(x, y, 150, 50);
               super.add(btn);
         }
 

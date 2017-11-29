@@ -33,16 +33,21 @@ public class HomeView extends JFrame{
     }
 
     private void initComponents() throws IOException {
+        //Icon Logo
+        Icon iconeLogo = new ImageIcon("logo.png");
+        JLabel lblLogo = new JLabel(iconeLogo);
+        lblLogo.setBounds(180, 50, 250, 250);
+        super.add(lblLogo);
         // icone start
         Icon startIcon = new ImageIcon("start.png");
        
         // icone de ranking
-       Icon rankingIcon = new ImageIcon("ranking.png");
+        Icon rankingIcon = new ImageIcon("ranking.png");
 
         // Criação do Botao de Start
         JButton btnStart = new JButton("Começar",startIcon);
         //btnStart.setIcon(startIcon);
-        btnStart.setBounds(100, 200, 130, 50);
+        btnStart.setBounds(100, 250, 150, 50);
         
         btnStart.addActionListener((e) -> {
             super.dispose();
@@ -53,9 +58,7 @@ public class HomeView extends JFrame{
         // Criacao do Botao de Ranking
         JButton btnRanking = new JButton("Ranking",rankingIcon);
        // btnRanking.setIcon(rankingIcon);
-        btnRanking.setBounds(350, 200, 130, 50);
-        
-        
+        btnRanking.setBounds(350, 250, 150, 50);
         
         btnRanking.addActionListener((e) -> {
             super.dispose();
@@ -63,7 +66,7 @@ public class HomeView extends JFrame{
         });
         
         // Label dos desenvolvedores
-        JLabel devs =  new JLabel("Developed by: renato lopes & Ana Paula");
+        JLabel devs =  new JLabel("Developed by: Renato Lopes & Ana Paula");
         devs.setBounds(160, 300, 500, 100);
         
         //Adicionar componentes no JFrame

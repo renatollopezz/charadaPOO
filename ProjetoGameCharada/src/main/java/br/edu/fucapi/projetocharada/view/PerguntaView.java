@@ -37,7 +37,8 @@ public class PerguntaView extends JFrame{
     private Pergunta perguntaAtual;
     private final Jogador jogador;
     private Integer pontosAtual=0;
-    private Integer posPergunta =0;
+    private Integer posPergunta =0; 
+    private JButton dica;
     private final  RankingDAO daoR = new RankingDAO();
     
     public PerguntaView(HomeView homeView,Jogador jogador,Genero genero) {
@@ -57,6 +58,8 @@ public class PerguntaView extends JFrame{
         //Criação dos componentes
         Icon iconeConfirmar = new ImageIcon("confirmar.png");
         Icon iconeDesistir = new ImageIcon("desistir.png");
+        Icon iconeDica = new ImageIcon("dica.png");
+        
         lblGenero = new JLabel("Gênero: "+genero.getTxGenero());
         lblJogador = new JLabel("Jogador: "+jogador.getTxNome());
         lblPontos = new JLabel("Pts:0");
@@ -64,15 +67,19 @@ public class PerguntaView extends JFrame{
         edtResposta = new JTextField();
         btnConfirmar = new JButton("Confirmar",iconeConfirmar);
         btnDesistir = new JButton("Desistir",iconeDesistir);
+        dica = new JButton();
+
         
         // Defirnir propriedade dos componentes
         lblJogador.setBounds(20, 20, 200, 30);
         lblGenero.setBounds(20, 50, 200, 30);
         lblPontos.setBounds(500, 20, 200, 30);
-        btnConfirmar.setBounds(130, 300, 130, 50);
-        btnDesistir.setBounds(330, 300, 130, 50);
+        btnConfirmar.setBounds(130, 300, 150, 50);
+        btnDesistir.setBounds(330, 300, 150, 50);
         edtResposta.setBounds(100, 200, 400,40);
-
+        dica.setBounds(500, 200, 40, 40);
+        dica.setIcon(iconeDica);
+        
         //Carregar Pergunta
         proximaPergunta();
         lblPergunta.setText(perguntaAtual.getTxPergunta());
@@ -88,6 +95,10 @@ public class PerguntaView extends JFrame{
            desistir();
         });
         
+        dica.addActionListener((ae) -> {
+            obterDica();
+        });
+        
         super.add(lblPontos);
         super.add(lblGenero);
         super.add(lblJogador);
@@ -95,6 +106,7 @@ public class PerguntaView extends JFrame{
         super.add(edtResposta);
         super.add(btnConfirmar);
         super.add(btnDesistir);
+        super.add(dica);
         
     }
 
@@ -110,7 +122,6 @@ public class PerguntaView extends JFrame{
             posPergunta++;
             if(perguntas.size() > posPergunta){
                 perguntaAtual =  perguntas.get(posPergunta);
-                System.out.println(perguntaAtual.getTxPergunta());
                 lblPergunta.setText(perguntaAtual.getTxPergunta());
                 atualizarRanking();
 
@@ -162,6 +173,21 @@ public class PerguntaView extends JFrame{
         }else{
             daoR.update(genero.getIdGenero(), jogador.getIdJogador(),pontosAtual);
         }   
+    }
+
+    private void obterDica() {
+        if(pontosAtual >= 10){
+                if(perguntaAtual.getTxDica() == null){
+                    JOptionPane.showMessageDialog(this, "Desculpe, mas essa pergunta não possui dica!");
+                }else{
+                    JOptionPane.showMessageDialog(this, perguntaAtual.getTxDica());
+                    pontosAtual-= 4;
+                    lblPontos.setText("Pts:"+pontosAtual.toString()); 
+                }
+
+        }else{
+                JOptionPane.showMessageDialog(this, "Você deve ter pelo menos 10 pontos para solicitar dica!");
+        }
     }
     
     

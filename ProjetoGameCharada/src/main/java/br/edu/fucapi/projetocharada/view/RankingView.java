@@ -43,7 +43,7 @@ public class RankingView extends JFrame{
 
        //Criando botão
        JButton btnVoltar = new JButton("Voltar",voltarIcon);
-       btnVoltar.setBounds(50, 280, 130, 50);
+       btnVoltar.setBounds(50, 280, 150, 50);
        //evento voltar
        btnVoltar.addActionListener( (e) -> {
           //acao para remover a tela 

@@ -14,6 +14,17 @@ public class Pergunta {
     private String txPergunta;
     private String txResposta;
     private Genero genero;
+    private String txDica;
+
+    public String getTxDica() {
+        return txDica;
+    }
+
+    public void setTxDica(String txDica) {
+        this.txDica = txDica;
+    }
+    
+    
 
     public Integer getIdPergunta() {
         return idPergunta;
@@ -46,6 +57,8 @@ public class Pergunta {
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
+    
+    
     
     
 }
